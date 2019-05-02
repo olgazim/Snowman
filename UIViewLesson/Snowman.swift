@@ -155,9 +155,10 @@ class Snowman: UIView {
         let start = CGPoint(x: mouthRect.minX,
                             y: mouthRect.midY)
         let cp1 = CGPoint(x: mouthRect.minX + mouthToWidthOffset,
-                          y: mouthRect.midY + min(1, max(mouthHappy * mouthConfussedRight * mouthConfussedLeft * height, -1)))
+                          y: mouthRect.midY + min(mouthOffset, max((mouthHappy + mouthConfussedLeft) * height, -mouthOffset)))
         let cp2 = CGPoint(x: mouthRect.maxX - mouthToWidthOffset,
-                          y: mouthRect.midY + min(1, max(mouthHappy * mouthConfussedRight * mouthConfussedLeft * height, -1)))
+                          y: mouthRect.midY + min(mouthOffset, max((mouthHappy + mouthConfussedRight) * height, -mouthOffset)))
+        print("midY = \(mouthRect.midY) y2 = \(cp2.y) y1 = \(cp1.y) mouthHappy = \(mouthHappy)")
         let end = CGPoint(x: mouthRect.maxX,
                           y: mouthRect.midY)
         mouthPath.move(to: start)
